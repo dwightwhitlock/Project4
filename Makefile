@@ -9,7 +9,7 @@ EXECUTABLE = TreeDr
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): TreeType.o QueType.o TreeDr.o
-	$(CC) $(LFLAGS) $(EXECUTABLE)TreeType.o QueType.o TreeDr.o
+	$(CC) $(LFLAGS) $(EXECUTABLE) TreeType.o QueType.o TreeDr.o
 
 $(TreeType.o): src/TreeType.cpp
 	$(CC) $(CFLAGS) src/TreeType.cpp
