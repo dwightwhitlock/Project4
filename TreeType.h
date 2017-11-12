@@ -1,8 +1,16 @@
 #include <string>
 #include <fstream>
-typedef int ItemType;
-struct TreeNode;
 #include "QueType.h"
+using namespace std;
+//typedef int ItemType;
+
+template <class ItemType>
+struct TreeNode
+{
+  ItemType info;
+  TreeNode* left;
+  TreeNode* right;
+};
 enum OrderType {PRE_ORDER, IN_ORDER, POST_ORDER};
 
 template <class ItemType>
@@ -20,24 +28,22 @@ public:
   int GetLength() const; 
   ItemType GetItem(ItemType item, bool& found);
   void PutItem(ItemType item);
-  void DeleteItem(ItemType item); //(5) modify with PtrToSuccessor
+  void DeleteItem(ItemType item);
   void ResetTree(OrderType order); 
   ItemType GetNextItem(OrderType order, bool& finished);
   void Print() const;
 
-  //TO IMPLEMENT
-  void LevelOrderPrint(ofstream &); //(2)
-  
-  void PreOrderPrint(ofstream &); //(3)
-  void InOrderPrint(ofstream&);
-  void PostOrderPrint(ofstream&);
-
-  void Ancestors(ItemType); //(6)
-
+  //To Implement
+  void Ancestors(ItemType value);
+  void LevelOrderPrint(ofstream &);
+  void PreOrderPrint(ofstream& out);
+  void InOrderPrint(ofstream& out);
+  void PostOrderPrint(ofstream& out);
+  void MirrorImage();
+  void MakeTree();
 private:
-  TreeNode<ItemType> * PtrToSuccessor(TreeNode<ItemType> *& tree); //(4)
-
-  TreeNode* root;
+  TreeNode<ItemType> PtrToSuccessor(TreeNode<ItemType>*& tree);
+  TreeNode<ItemType>* root;
   QueType preQue;
   QueType inQue;
   QueType postQue;
