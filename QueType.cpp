@@ -111,6 +111,17 @@ void QueType::Dequeue(ItemType& item)
   }
 }
 
+void QueType::Print(ofstream& stream){
+  NodeType * current;
+  current = front;
+
+  while(current != NULL){
+    stream << current->info;
+    stream << " ";
+    current = current->next;
+  }
+}
+
 QueType::QueType
   (const QueType& anotherQue)
 {
