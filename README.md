@@ -4,10 +4,7 @@ Binary Trees Project for Data Structures
 TO DO:
 
 Dwight:
-LevelOrderPrint()
-PreOrderPrint()
-InOrderPrint()
-PostOrderPrint()
+PostOrderPrint() (fix formatting)
 
 John:
 PointerToSuccessor()
