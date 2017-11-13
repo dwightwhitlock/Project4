@@ -1,5 +1,6 @@
 #include <string>
 #include <fstream>
+#include <queue>
 #include "QueType.h"
 using namespace std;
 //typedef int ItemType;
@@ -8,6 +9,7 @@ template <class ItemType>
 struct TreeNode
 {
   ItemType info;
+  int height; //adding this
   TreeNode* left;
   TreeNode* right;
 };
@@ -41,9 +43,12 @@ public:
   void PostOrderPrint(ofstream& out);
   void MirrorImage();
   void MakeTree();
+
 private:
   TreeNode<ItemType> PtrToSuccessor(TreeNode<ItemType>*& tree);
   TreeNode<ItemType>* root;
+  
+  QueType levelOrderQue;
   QueType preQue;
   QueType inQue;
   QueType postQue;

@@ -1,6 +1,10 @@
 // Header file for Queue ADT. 
 #include <new>
 #include <cstddef>
+#include <fstream>
+
+using namespace std;
+
 class FullQueue
 {};  
 
@@ -42,6 +46,9 @@ public:
     //       and item is undefined
     //       else front element has been removed from queue and
     //       item is a copy of removed element.
+
+    void Print(ofstream&);
+    //prints queue front front to rear
 private:
 
   NodeType* front;
