@@ -41,14 +41,15 @@ public:
   void PreOrderPrint(ofstream& out);
   void InOrderPrint(ofstream& out);
   void PostOrderPrint(ofstream& out);
-  void MirrorImage();
+  TreeType<ItemType> MirrorImage();
   void MakeTree();
 
 private:
   TreeNode<ItemType> PtrToSuccessor(TreeNode<ItemType>*& tree);
   TreeNode<ItemType>* root;
   
-  QueType levelOrderQue;
+  queue<TreeNode<ItemType> * > levelOrderQue;
+
   QueType preQue;
   QueType inQue;
   QueType postQue;
