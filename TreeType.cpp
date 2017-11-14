@@ -80,11 +80,11 @@ template<class ItemType>
 void TreeType<ItemType>::PutItem(ItemType item)
 // Calls recursive function Insert to insert item into tree.
 {
-  Insert(root, item);
+  Insert(root, item, 1);
 }
 
 template<class ItemType>
-void Insert(TreeNode<ItemType>*& tree, ItemType item)
+void Insert(TreeNode<ItemType>*& tree, ItemType item, int height)
 // Inserts item into tree.
 // Post:  item is in tree; search property is maintained.
 {
@@ -94,11 +94,13 @@ void Insert(TreeNode<ItemType>*& tree, ItemType item)
     tree->right = NULL;
     tree->left = NULL;
     tree->info = item;
+    tree->height = height;
+    //cout << "Height of " << tree->info << " is " << tree->height << endl;
   }
   else if (item < tree->info)
-    Insert(tree->left, item);    // Insert in left subtree.
+    Insert(tree->left, item, height +1);    // Insert in left subtree.
   else
-    Insert(tree->right, item);   // Insert in right subtree.
+    Insert(tree->right, item, height +1);   // Insert in right subtree.
 }
 
 template<class ItemType>
@@ -250,6 +252,7 @@ void CopyTree(TreeNode<ItemType>*& copy, const TreeNode<ItemType>* originalTree)
   {
     copy = new TreeNode<ItemType>;
     copy->info = originalTree->info;
+    copy->height = originalTree->height;
     CopyTree(copy->left, originalTree->left);
     CopyTree(copy->right, originalTree->right);
   }
@@ -362,19 +365,40 @@ void TreeType<ItemType>::LevelOrderPrint(ofstream & out){
   queue<TreeNode<ItemType> * > queue;
   TreeNode<ItemType> * temp;
   temp = root;
-
   
   while(temp != NULL){
-    out << temp->info;
-    out << " ";
+    levelOrderQue.push(temp);
 
-    if(temp->left != NULL) queue.push(temp->left);
-    if(temp->right != NULL) queue.push(temp->right);
+    if(temp->left != NULL){
+       queue.push(temp->left);
+    }
+    if(temp->right != NULL){ 
+      queue.push(temp->right);  
+    }
     temp = queue.front();
     queue.pop();
   }
- 
-}
+  
+  //order stored in levelOrderQue
+  int levelHeight = levelOrderQue.front()->height;
+  
+  while(!levelOrderQue.empty()){
+    temp = levelOrderQue.front();
+    levelOrderQue.pop();
+    
+    if(temp->height == levelHeight){
+      out << temp->info << " ";
+    }
+    else{
+      levelHeight = temp->height;
+      out << endl;
+      out << temp->info << " ";
+      
+    }
+  
+  }//while
+  
+}//levelOrder
 
 /**
  * Prints the tree on screen in preorder
@@ -403,8 +427,29 @@ void TreeType<ItemType>::PostOrderPrint(ofstream& out){
   postQue.Print(out);
 }
 
+/**
+ * Searches the tree post order and swaps nodes to create a mirror
+ **/
 template<class ItemType>
-void MirrorImage();
+void Mirror(TreeNode<ItemType> * tree){
+  if(tree != NULL)
+    {
+      Mirror(tree->left);
+      Mirror(tree->right);
+      //swap
+      TreeNode<ItemType> * temp;
+      temp = tree->left;
+      tree->left = tree->right;
+      tree->right = temp;
+    }
+}
+
+template<class ItemType>
+TreeType<ItemType> TreeType<ItemType>::MirrorImage(){
+  TreeType<ItemType> copy = *this;
+  Mirror(copy.root);
+  return copy;
+}
 
 template<class ItemType>
 void MakeTree();

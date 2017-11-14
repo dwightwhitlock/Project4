@@ -23,3 +23,4 @@ $(TreeDr.o): src/TreeDr.cpp
 clean:
 	rm -rf *.o
 	rm -rf TreeDr
+	rm -rf output.txt
