@@ -12,6 +12,3 @@ DeleteNode (#5)
 Ancestors
 MakeTree
 
-
-Later:
-MirrorImage
