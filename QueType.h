@@ -47,8 +47,6 @@ public:
     //       else front element has been removed from queue and
     //       item is a copy of removed element.
 
-    void Print(ofstream&);
-    //prints queue front front to rear
 private:
 
   NodeType* front;

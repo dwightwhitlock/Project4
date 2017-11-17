@@ -2,6 +2,7 @@
 #include <fstream>
 #include <queue>
 #include "QueType.h"
+#include <math.h>
 using namespace std;
 //typedef int ItemType;
 
