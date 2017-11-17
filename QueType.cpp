@@ -9,7 +9,6 @@ struct NodeType
 };
 
 
-
 QueType::QueType()          // Class constructor.
 // Post:  front and rear are set to NULL.
 {
@@ -88,7 +87,6 @@ void QueType::Enqueue(ItemType newItem)
   }
 }
 
-
 void QueType::Dequeue(ItemType& item)
 // Removes front item from the queue and returns it in item.
 // Pre:  Queue has been initialized and is not empty.
@@ -108,17 +106,6 @@ void QueType::Dequeue(ItemType& item)
     if (front == NULL)
       rear = NULL;
     delete tempPtr;
-  }
-}
-
-void QueType::Print(ofstream& stream){
-  NodeType * current;
-  current = front;
-
-  while(current != NULL){
-    stream << current->info;
-    stream << " ";
-    current = current->next;
   }
 }
 

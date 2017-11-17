@@ -1,0 +1,86 @@
+IsEmpty
+PutItem 5
+PutItem 3
+PutItem 7
+PrintTree
+PutItem 1
+PutItem 4
+PutItem 6
+PutItem 8
+PreOrderPrint
+PostOrderPrint
+IsFull
+IsEmpty
+GetItem 6
+GetItem 8
+GetItem 7
+GetItem 15
+GetItem 1
+PrintTree
+ResetTree IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+GetNextItem IN_ORDER
+PrintTree
+ResetTree POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+GetNextItem POST_ORDER
+PrintTree
+ResetTree PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+GetNextItem PRE_ORDER
+PrintTree
+GetLength
+IsEmpty
+DeleteItem 2
+DeleteItem 8
+DeleteItem 9
+DeleteItem 17
+DeleteItem 58
+DeleteItem 1
+DeleteItem 37
+DeleteItem 12
+DeleteItem 9
+DeleteItem 37
+DeleteItem 15
+IsEmpty
+PutItem 3
+PutItem 27
+PrintTree
+MakeEmpty
+IsEmpty
+MakeTree 10 20 30 40 50 60 70 80 90 100
+LevelOrderPrint
+MirrorImage
+MakeEmpty
+PrintTree
+Error
+Quit
+
+

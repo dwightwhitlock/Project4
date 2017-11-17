@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 
+
 using namespace std;
 
 void testIntegersList();
@@ -32,14 +33,23 @@ inFile>> command; // read commands from a text file
 
   while (command != "Quit")
   {
-
-      if (command== "IsEmpty")
+      outFile << command << endl;
+      if (command== "IsEmpty") {
         if(intTree.IsEmpty()){
           outFile << "list is empty" << endl;
         }
         else{
           outFile << "list is not empty" << endl;
         }
+      } 
+      else if(command== "IsFull") {
+        if(intTree.IsFull()){
+          outFile << "list is full " << endl;
+        }
+        else{
+          outFile << "list is not full" << endl;
+        }
+      } 
       else if (command == "GetLength")
       { 
         int length = intTree.GetLength();
@@ -58,10 +68,10 @@ inFile>> command; // read commands from a text file
         inFile >> getLoc;
         item = intTree.GetItem(getLoc, found);
         if(found){
-          outFile << item << "found\n";
+          outFile << item << " found\n";
         }
         else{
-          outFile << item << "not found\n";
+          outFile << item << " not found\n";
         }
       }
       else if (command == "GetNextItem")
@@ -106,7 +116,7 @@ inFile>> command; // read commands from a text file
       }
       else if (command == "PrintTree")
       { 
-        intTree.Print();
+        intTree.Print(outFile);
       }
       else if (command == "LevelOrderPrint")
       { 
@@ -148,7 +158,7 @@ inFile>> command; // read commands from a text file
       { 
         TreeType<int> Mirror;
         Mirror = intTree.MirrorImage();
-        Mirror.Print();
+        Mirror.Print(outFile);
       }
       else
       outFile << "Undefined Command" << endl;

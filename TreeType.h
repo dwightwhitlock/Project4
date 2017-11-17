@@ -2,7 +2,6 @@
 #include <fstream>
 #include <queue>
 #include "QueType.h"
-#include <math.h>
 using namespace std;
 //typedef int ItemType;
 
@@ -34,25 +33,22 @@ public:
   void DeleteItem(ItemType item);
   void ResetTree(OrderType order); 
   ItemType GetNextItem(OrderType order, bool& finished);
-  void Print() const;
+  void Print(ofstream& out) const;
 
   //To Implement
-  void Ancestors(ItemType value);
+  void Ancestors(ItemType value, ofstream& out);
   void LevelOrderPrint(ofstream &);
   void PreOrderPrint(ofstream& out);
   void InOrderPrint(ofstream& out);
   void PostOrderPrint(ofstream& out);
   TreeType<ItemType> MirrorImage();
-  void MakeTree();
+  void MakeTree(ItemType list[]);
 
 private:
   TreeNode<ItemType> PtrToSuccessor(TreeNode<ItemType>*& tree);
   TreeNode<ItemType>* root;
-  
   queue<TreeNode<ItemType> * > levelOrderQue;
-
   QueType preQue;
   QueType inQue;
   QueType postQue;
 };
-
