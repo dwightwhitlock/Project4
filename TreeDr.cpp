@@ -11,122 +11,148 @@ void testIntegersList();
 int main()
 {   
   testIntegersList();
+  return 0;
 }
 
 void testIntegersList()
 {
-SortedList<int> list;
+TreeType<int> intTree;
 string command;
 ifstream inFile;
 ofstream outFile;
-inFile.open("intcommands.txt");
+inFile.open("input.txt");
 outFile.open("outFile.txt");
+if(!outFile)
+{
+  std::cout << "error openning output file" << endl;
+  return;
+}
 
 inFile>> command; // read commands from a text file
 
-while (command != "Quit")
-{
-  try
+  while (command != "Quit")
   {
-    if (command== "isEmpty")
-      if( list.isEmpty())
-        outFile << "list is empty" << endl;
-      else
-        outFile << "list is not empty" << endl;
-    else if (command == "getLength")
-    { 
-      int length = list.getLength();
-      outFile << length << endl;
-    }
-    else if (command == "makeEmpty")
-    { 
-      list.makeEmpty();
-      outFile << "\n";
-    }
-    else if (command == "get")
-    { 
-      int item;
-      int getLoc;
-      inFile >> getLoc;
-      item = list.get(getLoc);
-      outFile << item << "\n";
-    }
-    else if (command == "putItem")
-    { 
-      int number;
-      inFile >> number;
-      list.insertItem(number);
-      outFile << "\n";
-    }
-    else if (command == "DeleteItem")
-    { 
-      int deleteInt;
-      inFile >> deleteInt;
-      list.deleteItem(deleteInt);
-      outFile << "\n";
-    }
-    else if (command == "printTree")
-    { 
-      list.printList(outFile);
-    }
-    else if (command == "LevelOrderPrint")
-    { 
-     
-    }
-    else if (command == "PreOrderPrint")
-    { 
-     
-    }
-    else if (command == "PostOrderPrint")
-    { 
-     
-    }
-    else if (command == "ResetTree")
-    { 
-     
-    }
-    else if (command == "GetLength")
-    { 
-     
-    }
-    else if (command == "MirrorImage")
-    { 
-     
-    }
-    else
-    outFile << "Undefined Command" << endl;
 
-  inFile>> command;
-  } // try
-  catch (FullList)
-  {
-    outFile << "List is full, insertion failed." << endl;
+      if (command== "IsEmpty")
+        if(intTree.IsEmpty()){
+          outFile << "list is empty" << endl;
+        }
+        else{
+          outFile << "list is not empty" << endl;
+        }
+      else if (command == "GetLength")
+      { 
+        int length = intTree.GetLength();
+        outFile << length << endl;
+      }
+      else if (command == "MakeEmpty")
+      { 
+        intTree.MakeEmpty();
+        outFile << "\n";
+      }
+      else if (command == "GetItem")
+      { 
+        bool found = false;
+        int item;
+        int getLoc;
+        inFile >> getLoc;
+        item = intTree.GetItem(getLoc, found);
+        if(found){
+          outFile << item << "found\n";
+        }
+        else{
+          outFile << item << "not found\n";
+        }
+      }
+      else if (command == "GetNextItem")
+      { 
+        bool finished = false;
+        int item;
+        string order;
+        OrderType orderr;
+        inFile >> order;
+
+        if(order == "IN_ORDER"){
+          orderr = IN_ORDER;
+        }
+        else if(order == "IN_ORDER"){
+          orderr = PRE_ORDER;
+        }
+        else{
+          orderr = POST_ORDER;
+        }
+
+        item = intTree.GetNextItem(orderr, finished);
+        if(finished){
+          outFile << item;
+        }
+        else{
+          outFile << "Treen empty\n";
+        }
+      }
+      else if (command == "PutItem")
+      { 
+        int number;
+        inFile >> number;
+        intTree.PutItem(number);
+        outFile << "\n";
+      }
+      else if (command == "DeleteItem")
+      { 
+        int deleteInt;
+        inFile >> deleteInt;
+        intTree.DeleteItem(deleteInt);
+        outFile << "\n";
+      }
+      else if (command == "printTree")
+      { 
+        intTree.Print();
+      }
+      else if (command == "LevelOrderPrint")
+      { 
+        intTree.LevelOrderPrint(outFile);
+      }
+      else if (command == "PreOrderPrint")
+      { 
+        intTree.PreOrderPrint(outFile);
+      }
+      else if (command == "PostOrderPrint")
+      { 
+        intTree.PostOrderPrint(outFile);
+      }
+      else if (command == "ResetTree")
+      { 
+        string order;
+        OrderType orderr;
+        inFile >> order;
+
+         if(order == "IN_ORDER"){
+          orderr = IN_ORDER;
+        }
+        else if(order == "IN_ORDER"){
+          orderr = PRE_ORDER;
+        }
+        else{
+          orderr = POST_ORDER;
+        }
+
+        intTree.ResetTree(orderr);
+      }
+      else if (command == "GetLength")
+      { 
+        int length;
+        length = intTree.GetLength();
+        outFile << length << endl;
+      }
+      else if (command == "MirrorImage")
+      { 
+        TreeType<int> Mirror;
+        Mirror = intTree.MirrorImage();
+        Mirror.Print();
+      }
+      else
+      outFile << "Undefined Command" << endl;
+
     inFile>> command;
-  }  
-  catch (EmptyQueue)
-  {
-     outFile << "List is empty, EmtpyList exception thrown." << endl;
-     inFile>> command;
-  }
-  catch (DuplicateItem)
-  {
-    outFile << "DuplicateItem exception thrown." << endl;
-    inFile>> command;
-  }
-  catch (NotInitalized)
-  {
-    outFile << "List has not been initalized." << endl;
-    inFile>> command;
-  }
-  catch (NotInList)
-  {
-    outFile << "Item is not in the list." << endl;
-    inFile>> command;
-  }
-  catch (OutOfBounds)
-  {
-    outFile << "Index out of range." << endl;
-    inFile>> command;
-  }
-} // while
+  } // while
 } // testIntegersList
