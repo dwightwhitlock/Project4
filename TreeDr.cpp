@@ -104,7 +104,7 @@ inFile>> command; // read commands from a text file
         intTree.DeleteItem(deleteInt);
         outFile << "\n";
       }
-      else if (command == "printTree")
+      else if (command == "PrintTree")
       { 
         intTree.Print();
       }
