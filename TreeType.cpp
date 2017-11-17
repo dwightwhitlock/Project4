@@ -378,7 +378,7 @@ void TreeType<ItemType>::LevelOrderPrint(ofstream & out){
     temp = queue.front();
     queue.pop();
   }
-  
+  /*
   int treeHeight = levelOrderQue.back()->height; 
   int width = pow(2, treeHeight -1);
   
@@ -420,8 +420,8 @@ void TreeType<ItemType>::LevelOrderPrint(ofstream & out){
       }
   }//while
   
-
-  /*
+*/
+  
   //order stored in levelOrderQue
   int levelHeight = levelOrderQue.front()->height;
 
@@ -440,7 +440,7 @@ void TreeType<ItemType>::LevelOrderPrint(ofstream & out){
     }
   
   }//while
-  */
+  
 }//levelOrder
 
 /**
